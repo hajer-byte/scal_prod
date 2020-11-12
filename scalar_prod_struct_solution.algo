@@ -1,0 +1,48 @@
+
+v1 :  STRUCT
+    v1_x : FLOAT;
+    v1_y : FLOAT;
+END_STRUCT
+
+v2 :  STRUCT
+    v2_x : FLOAT;
+    v2_y : FLOAT;
+END_STRUCT
+
+PROCEDURE Dot_product_proc(v1 , v2)
+VAR
+    ps: FLOAT; 
+BEGIN
+    ps:=((v1.v1_x)(v2.v2_x)) + ((v1.v1_y)(v2.v2_y))
+    Write(ps); 
+END
+
+FUNCTION Dot_product_func(v1 , v2)
+VAR
+    ps: FLOAT; 
+BEGIN
+   return( ((v1.v1_x)(v2.v2_x)) + ((v1.v1_y)(v2.v2_y)) );
+END
+
+
+ALGORITHM algorithm_name
+VAR
+   scalar_prod: FLOAT:= Dot_product_proc(v1,v2)
+   scalar_prod_funct: FLOAT:= Dot_product_func(v1,v2)
+   BEGIN
+
+   Read(v1, v2);
+
+   IF (scalar_prod = 0) THEN
+    Write("the vectors are orthogonal")
+     ELSE
+    Write("the vactors are not orthogonal")
+   END_IF
+
+   IF (scalar_prod_funct = 0) THEN
+    Write("the vectors are orthogonal")
+     ELSE
+    Write("the vactors are not orthogonal")
+   END_IF
+
+END
