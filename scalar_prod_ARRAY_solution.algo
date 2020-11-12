@@ -1,0 +1,42 @@
+v :  STRUCT
+    v_x : FLOAT;
+    v_y : FLOAT;
+END_STRUCT
+
+VEC : ARRAY_OF v[10];
+
+PROCEDURE Dot_product_proc(VEC)
+VAR
+    ps: FLOAT;
+    i: INTEGER;  
+BEGIN
+   FOR i FROM 0 TO VEC.length-1 DO
+      ps:= ps + ((VEC[i].v_x)(VEC[i+1].v_x)+ (VEC[i].v_y)(VEC[i+1].v_y));
+   END_FOR
+   Write(ps)
+END
+
+FUNCTION Dot_product_func(VEC):FLOAT
+VAR
+    ps: FLOAT; 
+    i: INTEGER;  
+BEGIN
+    FOR i FROM 0 TO VEC.length-1 DO
+      ps:= ps + ((VEC[i].v_x)(VEC[i+1].v_x)+ (VEC[i].v_y)(VEC[i+1].v_y));
+   END_FOR
+  return(ps)
+END
+
+
+ALGORITHM prod-scal
+VAR
+   scalar_prod_funct: FLOAT:= Dot_product_func(VEC.length = 3)
+
+   BEGIN
+   IF (scalar_prod_funct = 0) THEN
+    Write("the vectors are orthogonal")
+     ELSE
+    Write("the vactors are not orthogonal")
+   END_IF
+
+END
